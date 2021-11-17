@@ -6,6 +6,8 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import {Home} from "./components/Home";
+import {Topics} from "./components/Topics";
 
 // Since routes are regular React components, they
 // may be rendered anywhere in the app, including in
@@ -39,55 +41,5 @@ export default function NestingExample() {
         </Routes>
       </div>
     </Router>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function Topics() {
-  // The `path` lets us build <Route> paths that are
-  // relative to the parent route, while the `url` lets
-  // us build relative links.
-
-  return (
-    <div>
-      <h2>Topics</h2>
-      <ul>
-        <li>
-          <Link to="rendering">Rendering with React</Link>
-        </li>
-        <li>
-          <Link to="components">Components</Link>
-        </li>
-        <li>
-          <Link to="props-v-state">Props v. State</Link>
-        </li>
-      </ul>
-
-      <Routes>
-        <Route index element={<h3>Please select a topic.</h3>} />
-        <Route path={`:topicId`} element={<Topic />} />
-      </Routes>
-    </div>
-  );
-}
-
-function Topic() {
-  // The <Route> that rendered this component has a
-  // path of `/topics/:topicId`. The `:topicId` portion
-  // of the URL indicates a placeholder that we can
-  // get from `useParams()`.
-  let { topicId } = useParams();
-
-  return (
-    <div>
-      <h3>{topicId}</h3>
-    </div>
   );
 }
