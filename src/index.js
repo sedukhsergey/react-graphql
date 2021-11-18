@@ -21,13 +21,21 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     connectionParams: {
-      authToken: `Bearer ${localStorage.getItem('token')}`,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+      }
     },
+    // headers: {
+    //   authorization: localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : "",
+    // }
   }
 });
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3030/graphql',
+  headers: {
+    authorization: localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : "",
+  }
 });
 
 const splitLink = split(
