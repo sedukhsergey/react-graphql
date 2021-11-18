@@ -9,6 +9,7 @@ import {
 import {Home} from "./components/Home";
 import {Topics} from "./components/Topics";
 import {Posts} from "./components/Posts";
+import { LessonSubscription } from './components/LessonsSubscription'
 
 // Since routes are regular React components, they
 // may be rendered anywhere in the app, including in
@@ -33,6 +34,9 @@ export default function NestingExample() {
           <li>
             <Link to="posts">Posts</Link>
           </li>
+          <li>
+            <Link to="lessons-subscription">Lesson Subscription</Link>
+          </li>
         </ul>
 
         <hr />
@@ -42,6 +46,7 @@ export default function NestingExample() {
             <Route index element={<Home />} />
             <Route path="topics/*" element={<Topics />} />
             <Route path="posts/*" element={<Posts />} />
+            <Route path="lessons-subscription" element={<LessonSubscription />} />
           </Route>
         </Routes>
       </div>
