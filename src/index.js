@@ -17,7 +17,7 @@ import {
 import {setContext} from "@apollo/client/link/context";
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:3030/subscriptions',
+  uri: 'ws://localhost:3030/graphql',
   options: {
     reconnect: true,
     connectionParams: {
@@ -25,9 +25,9 @@ const wsLink = new WebSocketLink({
         authorization: `Bearer ${localStorage.getItem('token')}`,
       }
     },
-    // headers: {
-    //   authorization: localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : "",
-    // }
+    headers: {
+      authorization: localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : "",
+    }
   }
 });
 

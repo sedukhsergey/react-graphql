@@ -1,4 +1,4 @@
-import {gql, useMutation, useQuery} from "@apollo/client";
+import {gql, useMutation, useQuery, useSubscription} from "@apollo/client";
 
 const LESSONS_SUBSCRIPTION = gql`
     subscription {
@@ -10,6 +10,12 @@ const LESSONS_SUBSCRIPTION = gql`
 `;
 
 export const LessonSubscription = () => {
+  const { data, loading } = useSubscription(
+    LESSONS_SUBSCRIPTION
+  );
+
+  console.log('data',data)
+
   return (
       <div>Subscription</div>
   )
